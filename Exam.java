@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Exam extends Assessment {
 
     private int questions;
@@ -9,6 +11,7 @@ public class Exam extends Assessment {
         setMissed(missed);
 
         scoreCalc();
+
     }
 
     // Setter methods
@@ -39,7 +42,13 @@ public class Exam extends Assessment {
     }
 
     public int getPointsEach(){
-        return 100/getQuestions();
-
+        int result = 0;
+        try {
+            result = 100/getQuestions();
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Cannot divide by 0. Please try again.");
+            System.exit(0);
+        }
+        return result;
     }
 }
